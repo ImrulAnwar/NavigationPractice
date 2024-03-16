@@ -1,9 +1,9 @@
 package com.imrul.navigationpractice.screens
 
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -20,7 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.imrul.navigationpractice.Screen
+import com.imrul.navigationpractice.Routes
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -31,7 +31,7 @@ fun MainScreen(navController: NavController) {
     Column(
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxSize()
             .padding(horizontal = 50.dp)
     ) {
         TextField(
@@ -46,7 +46,7 @@ fun MainScreen(navController: NavController) {
 
         Button(
             onClick = {
-                navController.navigate(Screen.DetailScreenObject.withArgs(text))
+                navController.navigate(Routes.DetailScreenRoute.withArgs(text))
             },
             modifier = Modifier.align(Alignment.End),
             content = {Text("Go to Next Page")}

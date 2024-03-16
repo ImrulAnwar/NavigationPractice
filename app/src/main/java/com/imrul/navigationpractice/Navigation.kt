@@ -1,6 +1,5 @@
 package com.imrul.navigationpractice
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -13,26 +12,21 @@ import com.imrul.navigationpractice.screens.MainScreen
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = Screen.MainScreenObject.route ){
+    NavHost(navController = navController, startDestination = Routes.MainScreenRoute.route ){
         composable(
-            route = Screen.MainScreenObject.route
+            route = Routes.MainScreenRoute.route,
         ) {
-            //still not sure what this is doing
             MainScreen(navController = navController)
         }
         composable(
-            route = Screen.DetailScreenObject.route+"/{nameString}",
+            route = Routes.DetailScreenRoute.route+"/{nameString}",
             arguments = listOf(
                 navArgument(name = "nameString"){
                     type = NavType.StringType
-                    defaultValue = "Imrul"
                 }
-            ),
-            content = {
-//                Log.d("problemcheck", "Navigation: ")
-                DetailScreen(name = it.arguments?.getString("nameString"))
-            }
-        )
+            )
+        ){
+            DetailScreen(name = it.arguments?.getString("nameString"))
+        }
     }
-
 }

@@ -1,18 +1,15 @@
 package com.imrul.navigationpractice
 
-import android.util.Log
-
-sealed class Screen(
+sealed class Routes(
     val route: String
 ){
-    object MainScreenObject: Screen("main_screen")
-    object DetailScreenObject: Screen("detail_screen")
+    object MainScreenRoute: Routes("main_screen")
+    object DetailScreenRoute: Routes("detail_screen")
 
     fun withArgs(vararg args: String):String{
         return buildString {
             append(route)
             args.forEach {
-                Log.d("problemcheck", "goToDetailPage: ")
                 append("/$it")
             }
         }
